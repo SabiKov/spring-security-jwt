@@ -23,7 +23,7 @@ public class JWTController {
         return "Hello world";
     }
 
-    @PostMapping("/authenticate")
+    @PostMapping("/merkantil-api/dfin/jwt/authenticate")
     public ResponseEntity<?> createAuthenticationToken(
             @RequestBody AuthenticationRequest auth) throws Exception {
         try {

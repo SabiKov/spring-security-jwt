@@ -1,5 +1,6 @@
 package com.sabi11.springsecurityjwt;
 
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -13,14 +14,12 @@ import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-
+@AllArgsConstructor
 @EnableWebSecurity
 public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
 
-    @Autowired
     private MyUserDetailsService myUserDetailsService;
 
-    @Autowired
     private JWTRequestFilter jwtRequestFilter;
 
 
@@ -33,7 +32,7 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
     public void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/authenticate")
+                .antMatchers("/merkantil-api/dfin/jwt/authenticate")
                 .permitAll()
                 .anyRequest()
                 .authenticated()
